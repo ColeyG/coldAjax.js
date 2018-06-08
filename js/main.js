@@ -1,34 +1,16 @@
-function coldAjax(coldAjaxMethod,coldAjaxUrl,coldAjaxProcessor){
+/*Building the AJAX call*/
 
-    const coldHttpRequest = new XMLHttpRequest();
-
-    function loading(){
-        if(!coldHttpRequest){
-            alert('Request Failed!');
-        }
-        coldHttpRequest.onreadystatechange = processRequest;
-        coldHttpRequest.open(coldAjaxMethod,coldAjaxUrl,true);
-        coldHttpRequest.send();
-    }
-
-    function processRequest(){
-        if(coldHttpRequest.readyState == XMLHttpRequest.DONE){
-            if(coldHttpRequest.status === 200){
-                let data = JSON.parse(coldHttpRequest.responseText);
-                let resp = data;
-                coldAjaxProcessor(data);
-            }else{
-                let resp = "Failed Request!";
-                coldAjaxProcessor(resp);
-            }
-        }
-    }
-
-    loading();
-}
-
-function bing(data){
+/*Destructuring function requires a data parameter*/
+function logger(data){
     console.log(data);
 }
 
-coldAjax("GET",'php/returnOne.php',bing);
+function loggerTwo(data){
+    let dJson = JSON.parse(data);
+    console.log(dJson);
+}
+
+/*Call with parameters, METHOD, URL, DESTRUCTURING FUNCTION*/
+coldAjax("GET",'php/returnOne.php',logger);
+
+coldAjax("GET",'php/returnTwo.php',loggerTwo);

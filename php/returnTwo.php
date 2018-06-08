@@ -1,6 +1,6 @@
 <?php
 
-    $response="Response from returnTwo.php";
+    $response='{"resp": "Response from returnTwo.php"}';
 
     echo json_encode($response);
 
