@@ -1,25 +1,25 @@
-function coldAjax(coldAjaxUrl,process){
+function coldAjax(coldAjaxUrl,coldAjaxProcessor){
 
-    const httpRequest = new XMLHttpRequest();
+    const coldHttpRequest = new XMLHttpRequest();
 
     function loading(){
-        if(!httpRequest){
+        if(!coldHttpRequest){
             alert('Request Failed!');
         }
-        httpRequest.onreadystatechange = processRequest;
-        httpRequest.open("GET",coldAjaxUrl,true);
-        httpRequest.send();
+        coldHttpRequest.onreadystatechange = processRequest;
+        coldHttpRequest.open("GET",coldAjaxUrl,true);
+        coldHttpRequest.send();
     }
 
     function processRequest(){
-        if(httpRequest.readyState == XMLHttpRequest.DONE){
-            if(httpRequest.status === 200){
-                var data = JSON.parse(httpRequest.responseText);
-                var resp = data;
-                process(data);
+        if(coldHttpRequest.readyState == XMLHttpRequest.DONE){
+            if(coldHttpRequest.status === 200){
+                let data = JSON.parse(coldHttpRequest.responseText);
+                let resp = data;
+                coldAjaxProcessor(data);
             }else{
-                var resp = "Failed Request!";
-                process(resp);
+                let resp = "Failed Request!";
+                coldAjaxProcessor(resp);
             }
         }
     }
