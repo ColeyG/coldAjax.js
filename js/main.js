@@ -19,6 +19,7 @@ function coldAjax(coldAjaxUrl,process){
                 process(data);
             }else{
                 var resp = "Failed Request!";
+                process(resp);
             }
         }
     }
