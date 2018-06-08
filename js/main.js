@@ -1,4 +1,4 @@
-function coldAjax(coldAjaxUrl,coldAjaxProcessor){
+function coldAjax(coldAjaxMethod,coldAjaxUrl,coldAjaxProcessor){
 
     const coldHttpRequest = new XMLHttpRequest();
 
@@ -7,7 +7,7 @@ function coldAjax(coldAjaxUrl,coldAjaxProcessor){
             alert('Request Failed!');
         }
         coldHttpRequest.onreadystatechange = processRequest;
-        coldHttpRequest.open("GET",coldAjaxUrl,true);
+        coldHttpRequest.open(coldAjaxMethod,coldAjaxUrl,true);
         coldHttpRequest.send();
     }
 
@@ -31,4 +31,4 @@ function bing(data){
     console.log(data);
 }
 
-coldAjax('php/returnOne.php',bing);
+coldAjax("GET",'php/returnOne.php',bing);
