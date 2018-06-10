@@ -14,7 +14,7 @@ function coldAjax(coldAjaxMethod,coldAjaxUrl,coldAjaxProcessor){
     function processRequest(){
         if(coldHttpRequest.readyState == XMLHttpRequest.DONE){
             if(coldHttpRequest.status === 200){
-                let data = JSON.parse(coldHttpRequest.responseText);
+                let data = coldHttpRequest.responseText;
                 let resp = data;
                 coldAjaxProcessor(data);
             }else{
