@@ -16,7 +16,7 @@ function coldAjax(coldAjaxMethod,coldAjaxUrl,coldAjaxProcessor){
             if(coldHttpRequest.status === 200){
                 let data = coldHttpRequest.responseText;
                 let resp = data;
-                coldAjaxProcessor(data);
+                coldAjaxProcessor(resp);
             }else{
                 let resp = "Failed Request!";
                 coldAjaxProcessor(resp);
